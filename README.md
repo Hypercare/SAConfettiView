@@ -109,6 +109,9 @@ To start the confetti, use
 ``` swift
 confettiView.startConfetti()
 ```
+To start the confetti with a timer use
+```swift
+confettiView.
 
 ### Stopping
 
