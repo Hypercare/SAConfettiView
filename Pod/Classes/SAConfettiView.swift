@@ -10,7 +10,7 @@ import UIKit
 import QuartzCore
 
 open class SAConfettiView: UIView {
-    
+
     public enum ConfettiType {
         case confetti
         case triangle
@@ -24,7 +24,7 @@ open class SAConfettiView: UIView {
     open var intensity: Float!
     open var type: ConfettiType!
     fileprivate var active :Bool!
-    
+
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
@@ -64,14 +64,15 @@ open class SAConfettiView: UIView {
             active = true
         }
     }
-    
+
     open func stopConfetti() {
         emitter?.birthRate = 0
         active = false
     }
+
     
     func imageForType(_ type: ConfettiType) -> UIImage? {
-        
+      
         var fileName: String!
         
         switch type {
@@ -86,7 +87,7 @@ open class SAConfettiView: UIView {
         case let .image(customImage):
             return customImage
         }
-        
+
         let path = Bundle(for: SAConfettiView.self).path(forResource: "SAConfettiView", ofType: "bundle")
         let bundle = Bundle(path: path!)
         let imagePath = bundle?.path(forResource: fileName, ofType: "png")
@@ -97,7 +98,7 @@ open class SAConfettiView: UIView {
         }
         return nil
     }
-    
+
     func confettiWithColor(_ color: UIColor) -> CAEmitterCell {
         let confetti = CAEmitterCell()
         confetti.birthRate = 6.0 * intensity
